@@ -24,7 +24,8 @@ trait DetermineService
     protected function determineService($service)
     {
     	if ($service == "github") {
-
+            $this->fetch = new FetchGitHub();
+            return $this->fetch->getGitHubRepos();
     	}
         elseif ($service == "hackernews") {
             $this->fetch = new FetchHackerNews();
