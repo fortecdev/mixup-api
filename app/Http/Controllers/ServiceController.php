@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
 
 	use DetermineService, DetermineNewsService;
-    
+
     public function getService(Request $request)
     {
     	$service = $this->fetchService($request);
@@ -20,7 +20,8 @@ class ServiceController extends Controller
 
     public function getNews(Request $request)
     {
-    	return $this->fetchNews();
+    	$news = $this->fetchNews($request);
+        return response()->json($news, 200);
     }
 
 }

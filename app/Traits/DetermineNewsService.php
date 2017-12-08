@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use App\Services\FetchHeadlines;
 
 /**
  * summary
@@ -10,13 +11,10 @@ use Illuminate\Http\Request;
 trait DetermineNewsService
 {
 
-    public function fetchNews()
+    public function fetchNews(Request $request)
     {
-        
-    }
-
-    protected function determineNews(){
-
+		$headline = new FetchHeadlines($request->service);
+    	return $headline->getNewsHeadlines();
     }
 
 }
