@@ -51,13 +51,14 @@ class FetchHackerNews implements ConstructResponse
 
 		$posts = collect();
 
+		// Fetch the post details for every post ID
 		foreach ($items as $postId) {
 
 			$post = $this->getPost($postId);
 
 			$posts->push([
 				'id' => $post['id'],
-				'url' => $post['url'],
+				'url' => array_has($post, 'url') ? $post['url'] : '' ,
 				'author' => $post['by'],
 				'title' => $post['title'],
 				'score' => $post['score'],
@@ -109,5 +110,5 @@ class FetchHackerNews implements ConstructResponse
 	{
 		return $this->baseUrl . "/item/" . $postId . ".json?print=pretty";
 	}
-	
+
 }
