@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\FetchGitHub;
 use App\Services\FetchMedium;
 use App\Services\FetchHackerNews;
+use App\Services\FetchIndieHackers;
 
 /**
  * summary
@@ -41,6 +42,10 @@ trait DetermineService
             case "medium":
                 $this->fetch = new FetchMedium();
                 return $this->fetch->getMediumPosts();
+                break;
+            case "indiehackers":
+                $this->fetch = new FetchIndieHackers();
+                return $this->fetch->getFeaturedStories();
                 break;
 
             default:

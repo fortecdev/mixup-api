@@ -3,13 +3,13 @@
 namespace App\Services;
 
 use Goutte\Client as GoutteClient;
-use App\Contracts\ConstructResponse;
+use App\Contracts\ParseResponse;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * summary
  */
-class FetchGitHub
+class FetchGitHub extends ParseResponse
 {
 
 	protected $client;
