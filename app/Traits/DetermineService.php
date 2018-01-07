@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
+use App\Services\FetchGitHub;
 use App\Services\FetchMedium;
 use App\Services\FetchHackerNews;
 
@@ -23,21 +24,30 @@ trait DetermineService
 
     protected function determineService($service)
     {
-    	if ($service == "github") {
-            $this->fetch = new FetchGitHub();
-            return $this->fetch->getGitHubRepos();
-    	}
-        elseif ($service == "hackernews") {
-            $this->fetch = new FetchHackerNews();
-            return $this->fetch->getHackerNewsPosts();
+
+        switch ($service) {
+
+            case "producthunt":
+                // code...
+                break;
+            case "github":
+                $this->fetch = new FetchGitHub();
+                return $this->fetch->getGitHubRepos();
+                break;
+            case "hackernews":
+                $this->fetch = new FetchHackerNews();
+                return $this->fetch->getHackerNewsPosts();
+                break;
+            case "medium":
+                $this->fetch = new FetchMedium();
+                return $this->fetch->getMediumPosts();
+                break;
+
+            default:
+                // code...
+                break;
         }
-    	elseif ($service == "medium") {
-    		$this->fetch = new FetchMedium();
-            return $this->fetch->getMediumPosts();
-    	}
-    	elseif ($service == "producthunt") {
-    		
-    	}
+
     }
 
 }
