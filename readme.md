@@ -29,4 +29,4 @@ php artisan serve --port=9090
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Olumide Falomo
+Copyright (c) 2018 Olumide Falomo
