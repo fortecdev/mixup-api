@@ -74,21 +74,6 @@ class FetchGitHub extends ParseResponse
 		return $responseData;
 	}
 
-	/**
-	 * Convert the document text to a string
-	 * 
-	 * Since the extract() method returns an array,
-	 * we would convert that array into its own string,
-	 * and remove trim the string.
-	 * 
-	 * @param array
-	 * @return string
-	*/
-	public function toString($arr)
-	{
-		return trim(implode(' ', $arr));
-	}
-
 	protected function githubUrl()
 	{
 		// return "http://localhost:3000/trending.html";
